@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vladan Mitic - MarTech & AI Automation Engineer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23080808'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-weight='700' font-size='13' fill='%23f0a020'>VM</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -132,6 +133,26 @@
     .avail-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
+  /* CUSTOM CURSOR */
+  * { cursor: none !important; }
+  .cursor-dot { width: 6px; height: 6px; background: var(--amber); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s ease, background 0.2s; }
+  .cursor-ring { width: 32px; height: 32px; border: 1.5px solid var(--amber); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease, border-color 0.2s; opacity: 0.5; }
+  .cursor-ring.hover { width: 48px; height: 48px; opacity: 0.8; border-color: #ffb830; }
+  .cursor-dot.hover { transform: translate(-50%, -50%) scale(2); background: #ffb830; }
+  @media (hover: none) { * { cursor: auto !important; } .cursor-dot, .cursor-ring { display: none; } }
+
+  /* SCROLL ANIMATIONS */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal-left.visible { opacity: 1; transform: translateX(0); }
+  .reveal-scale { opacity: 0; transform: scale(0.95); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal-scale.visible { opacity: 1; transform: scale(1); }
+  .stagger-1 { transition-delay: 0.05s; }
+  .stagger-2 { transition-delay: 0.12s; }
+  .stagger-3 { transition-delay: 0.19s; }
+  .stagger-4 { transition-delay: 0.26s; }
+
   /* LARGE MOBILE: 480px - 768px */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
@@ -183,6 +204,9 @@
 </head>
 <body>
 
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
 <nav>
   <div class="nav-logo">VM_<span class="cursor"></span></div>
   <ul class="nav-links">
@@ -204,26 +228,26 @@
 </div>
 
 <div class="metrics">
-  <div class="metric"><div class="metric-val">90%</div><div class="metric-lbl">MANUAL ENTRY ELIMINATED</div></div>
-  <div class="metric"><div class="metric-val">65%</div><div class="metric-lbl">PROCESS REDUCTION</div></div>
-  <div class="metric"><div class="metric-val">+21%</div><div class="metric-lbl">SQL CONVERSION GAINED</div></div>
+  <div class="metric reveal stagger-1"><div class="metric-val">90%</div><div class="metric-lbl">MANUAL ENTRY ELIMINATED</div></div>
+  <div class="metric reveal stagger-2"><div class="metric-val">65%</div><div class="metric-lbl">PROCESS REDUCTION</div></div>
+  <div class="metric reveal stagger-3"><div class="metric-val">+21%</div><div class="metric-lbl">SQL CONVERSION GAINED</div></div>
 </div>
 
 <section id="services">
-  <div class="section-tag">// WHAT I BUILD</div>
+  <div class="section-tag reveal">// WHAT I BUILD</div>
   <div class="services-grid">
-    <div class="service"><div class="service-num">01</div><div class="service-title">Automation Audit</div><div class="service-desc">I review your current stack, map every manual touchpoint, and deliver a clear action plan. You will know exactly what is broken, what is fixable, and what to build first.</div></div>
-    <div class="service"><div class="service-num">02</div><div class="service-title">Workflow Build</div><div class="service-desc">Scoped, production-ready automation builds on n8n, Make, or Zapier. Single workflow or multi-step pipeline. I scope it tight and deliver fast.</div></div>
-    <div class="service"><div class="service-num">03</div><div class="service-title">CRM Architecture</div><div class="service-desc">HubSpot or Salesforce. Setup from scratch, cleanup of broken configs, lifecycle workflows, segmentation, and data pipeline integrity. Done properly.</div></div>
-    <div class="service"><div class="service-num">04</div><div class="service-title">AI Agent Integration</div><div class="service-desc">OpenAI, Claude, Gemini built into your real workflows, not demos. Multi-agent pipelines, prompt engineering, and orchestration that actually works in production.</div></div>
+    <div class="service reveal stagger-1"><div class="service-num">01</div><div class="service-title">Automation Audit</div><div class="service-desc">I review your current stack, map every manual touchpoint, and deliver a clear action plan. You will know exactly what is broken, what is fixable, and what to build first.</div></div>
+    <div class="service reveal stagger-2"><div class="service-num">02</div><div class="service-title">Workflow Build</div><div class="service-desc">Scoped, production-ready automation builds on n8n, Make, or Zapier. Single workflow or multi-step pipeline. I scope it tight and deliver fast.</div></div>
+    <div class="service reveal stagger-3"><div class="service-num">03</div><div class="service-title">CRM Architecture</div><div class="service-desc">HubSpot or Salesforce. Setup from scratch, cleanup of broken configs, lifecycle workflows, segmentation, and data pipeline integrity. Done properly.</div></div>
+    <div class="service reveal stagger-4"><div class="service-num">04</div><div class="service-title">AI Agent Integration</div><div class="service-desc">OpenAI, Claude, Gemini built into your real workflows, not demos. Multi-agent pipelines, prompt engineering, and orchestration that actually works in production.</div></div>
   </div>
 </section>
 
 <section id="work">
-  <div class="section-tag">// SELECTED WORK</div>
+  <div class="section-tag reveal">// SELECTED WORK</div>
   <div class="work-grid">
 
-    <div class="case" id="case1">
+    <div class="case reveal stagger-1" id="case1">
       <div class="case-header" onclick="toggleCase('case1')">
         <div class="case-meta">
           <div class="case-company">INSTANTLY AI</div>
@@ -248,7 +272,7 @@
       </div>
     </div>
 
-    <div class="case" id="case2">
+    <div class="case reveal stagger-2" id="case2">
       <div class="case-header" onclick="toggleCase('case2')">
         <div class="case-meta">
           <div class="case-company">INSTANTLY AI</div>
@@ -273,7 +297,7 @@
       </div>
     </div>
 
-    <div class="case" id="case3">
+    <div class="case reveal stagger-3" id="case3">
       <div class="case-header" onclick="toggleCase('case3')">
         <div class="case-meta">
           <div class="case-company">INSTANTLY AI</div>
@@ -298,7 +322,7 @@
       </div>
     </div>
 
-    <div class="case" id="case4">
+    <div class="case reveal stagger-4" id="case4">
       <div class="case-header" onclick="toggleCase('case4')">
         <div class="case-meta">
           <div class="case-company">INSTANTLY AI</div>
@@ -327,19 +351,19 @@
 </section>
 
 <section id="process">
-  <div class="section-tag">// HOW I WORK</div>
+  <div class="section-tag reveal">// HOW I WORK</div>
   <div class="process-grid">
-    <div class="process-step"><div class="step-num">01</div><div class="step-title">SCOPE CALL</div><div class="step-desc">30 min. I understand the problem, existing stack, and what good looks like. No commitment required.</div></div>
-    <div class="process-step"><div class="step-num">02</div><div class="step-title">PROPOSAL</div><div class="step-desc">Clear deliverables, timeline, and fixed price. No retainer, no scope creep.</div></div>
-    <div class="process-step"><div class="step-num">03</div><div class="step-title">BUILD</div><div class="step-desc">I build fast. You get updates. Most projects ship in 1 to 3 weeks depending on scope.</div></div>
-    <div class="process-step"><div class="step-num">04</div><div class="step-title">HANDOVER</div><div class="step-desc">Full documentation, walkthrough recording, and 2 weeks of support included.</div></div>
+    <div class="process-step reveal stagger-1"><div class="step-num">01</div><div class="step-title">SCOPE CALL</div><div class="step-desc">30 min. I understand the problem, existing stack, and what good looks like. No commitment required.</div></div>
+    <div class="process-step reveal stagger-2"><div class="step-num">02</div><div class="step-title">PROPOSAL</div><div class="step-desc">Clear deliverables, timeline, and fixed price. No retainer, no scope creep.</div></div>
+    <div class="process-step reveal stagger-3"><div class="step-num">03</div><div class="step-title">BUILD</div><div class="step-desc">I build fast. You get updates. Most projects ship in 1 to 3 weeks depending on scope.</div></div>
+    <div class="process-step reveal stagger-4"><div class="step-num">04</div><div class="step-title">HANDOVER</div><div class="step-desc">Full documentation, walkthrough recording, and 2 weeks of support included.</div></div>
   </div>
 </section>
 
 <section id="stack">
-  <div class="section-tag">// TECH STACK</div>
+  <div class="section-tag reveal">// TECH STACK</div>
   <div class="stack-grid">
-    <div class="stack-group">
+    <div class="stack-group reveal stagger-1">
       <div class="stack-group-title">AI & AUTOMATION</div>
       <div class="stack-items">
         <div class="stack-item">n8n, Make, Zapier</div>
@@ -349,7 +373,7 @@
         <div class="stack-item">Agent orchestration</div>
       </div>
     </div>
-    <div class="stack-group">
+    <div class="stack-group reveal stagger-2">
       <div class="stack-group-title">CRM & MARTECH</div>
       <div class="stack-items">
         <div class="stack-item">HubSpot (advanced)</div>
@@ -359,7 +383,7 @@
         <div class="stack-item">Instantly AI</div>
       </div>
     </div>
-    <div class="stack-group">
+    <div class="stack-group reveal stagger-3">
       <div class="stack-group-title">INTEGRATIONS</div>
       <div class="stack-items">
         <div class="stack-item">Slack, Typeform</div>
@@ -373,8 +397,8 @@
 </section>
 
 <section id="contact">
-  <div class="section-tag">// GET IN TOUCH</div>
-  <div class="avail-bar">
+  <div class="section-tag reveal">// GET IN TOUCH</div>
+  <div class="avail-bar reveal">
     <div class="avail-left">
       <div class="avail-dot"></div>
       <div>
@@ -384,7 +408,7 @@
     </div>
     <div class="avail-sub">Typical response within 24h</div>
   </div>
-  <div class="contact-grid">
+  <div class="contact-grid reveal">
     <a href="mailto:buzzvladan@gmail.com" class="contact-link">
       <div class="contact-icon">@</div>
       <div><div class="contact-label">EMAIL</div><div class="contact-val">buzzvladan@gmail.com</div></div>
@@ -405,6 +429,45 @@
 function toggleCase(id) {
   document.getElementById(id).classList.toggle('open');
 }
+
+// CUSTOM CURSOR
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  dot.style.left = mouseX + 'px';
+  dot.style.top = mouseY + 'px';
+});
+
+function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top = ringY + 'px';
+  requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .case-header, .service, .btn-primary, .btn-ghost').forEach(el => {
+  el.addEventListener('mouseenter', () => { dot.classList.add('hover'); ring.classList.add('hover'); });
+  el.addEventListener('mouseleave', () => { dot.classList.remove('hover'); ring.classList.remove('hover'); });
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
