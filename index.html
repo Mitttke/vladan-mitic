@@ -200,15 +200,109 @@
     .contact-val { font-size: 12px; }
     .avail-txt { font-size: 12px; }
   }
+
+  /* SCROLL PROGRESS BAR */
+  #progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: var(--amber); z-index: 9999; width: 0%; transition: width 0.1s linear; }
+
+  /* PARTICLE CANVAS */
+  #particle-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.35; }
+  body > *:not(#particle-canvas):not(.cursor-dot):not(.cursor-ring):not(#progress-bar) { position: relative; z-index: 1; }
+
+  /* HERO TYPEWRITER */
+  .typewriter-line { overflow: hidden; white-space: nowrap; border-right: none; }
+  .hero-h1 .line1, .hero-h1 .line2, .hero-h1 .line3 { display: block; overflow: hidden; }
+
+  /* GLITCH LOGO */
+  .nav-logo { position: relative; }
+  .nav-logo:hover .logo-text { animation: glitch 0.4s steps(2) forwards; }
+  @keyframes glitch {
+    0%   { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; transform: translateX(0); }
+    20%  { text-shadow: -2px 0 #ff0040, 2px 0 #00ffff; transform: translateX(2px); }
+    40%  { text-shadow: 2px 0 #ff0040, -2px 0 #00ffff; transform: translateX(-2px); }
+    60%  { text-shadow: -1px 0 #ff0040, 1px 0 #00ffff; transform: translateX(1px); }
+    80%  { text-shadow: 1px 0 #ff0040, -1px 0 #00ffff; transform: translateX(-1px); }
+    100% { text-shadow: none; transform: translateX(0); }
+  }
+
+  /* METRIC COUNTER */
+  .metric-val { transition: color 0.3s; }
+  .metric:hover .metric-val { color: #ffb830; text-shadow: 0 0 20px rgba(240,160,32,0.3); }
+  .metric { transition: background 0.3s; }
+  .metric:hover { background: var(--bg3); }
+
+  /* SERVICE HOVER */
+  .service { position: relative; overflow: hidden; }
+  .service::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--amber); transition: width 0.35s ease; }
+  .service:hover::after { width: 100%; }
+  .service-num { transition: color 0.2s, letter-spacing 0.2s; }
+  .service:hover .service-num { letter-spacing: 4px; }
+
+  /* CASE STUDY HOVER */
+  .case { transition: border-color 0.3s, transform 0.2s; }
+  .case:hover { transform: translateX(3px); border-color: rgba(240,160,32,0.3) !important; }
+  .case-body { overflow: hidden; max-height: 0; display: block !important; transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease; padding-bottom: 0 !important; }
+  .case.open .case-body { max-height: 1200px; padding-bottom: 32px !important; }
+  .case-header { position: relative; overflow: hidden; }
+  .case-header::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 0; background: var(--amber); transition: height 0.3s ease; }
+  .case:hover .case-header::before, .case.open .case-header::before { height: 100%; }
+
+  /* NAV LINK UNDERLINE */
+  .nav-links a { position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--amber); transition: width 0.25s ease; }
+  .nav-links a:hover::after { width: 100%; }
+
+  /* STACK ITEM HOVER */
+  .stack-item { transition: color 0.2s, transform 0.2s, letter-spacing 0.2s; padding: 3px 0; }
+  .stack-item:hover { color: var(--amber); transform: translateX(6px); }
+
+  /* CONTACT LINK */
+  .contact-link { position: relative; overflow: hidden; }
+  .contact-link::after { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(240,160,32,0.04), transparent); transition: left 0.5s ease; }
+  .contact-link:hover::after { left: 100%; }
+  .contact-icon { transition: transform 0.3s ease, color 0.2s; }
+  .contact-link:hover .contact-icon { transform: scale(1.2) rotate(-5deg); }
+
+  /* PROCESS STEP */
+  .process-step { transition: background 0.3s; position: relative; overflow: hidden; }
+  .process-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 0; background: rgba(240,160,32,0.04); transition: height 0.3s ease; }
+  .process-step:hover::before { height: 100%; }
+  .step-num { transition: color 0.3s, transform 0.3s; }
+  .process-step:hover .step-num { color: rgba(240,160,32,0.25); transform: scale(1.1); }
+
+  /* BTN ANIMATIONS */
+  .btn-primary { position: relative; overflow: hidden; }
+  .btn-primary::before { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(255,255,255,0.15); border-radius: 50%; transform: translate(-50%,-50%); transition: width 0.4s ease, height 0.4s ease, opacity 0.4s; opacity: 0; }
+  .btn-primary:active::before { width: 200px; height: 200px; opacity: 1; }
+
+  /* AVAILABILITY DOT RIPPLE */
+  .avail-dot::after { content: ''; position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; background: var(--green); border-radius: 50%; transform: translate(-50%,-50%); animation: ripple 2s ease-out infinite; }
+  .avail-dot { position: relative; }
+  @keyframes ripple { 0% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; } 100% { transform: translate(-50%,-50%) scale(3.5); opacity: 0; } }
+
+  /* SECTION HEADER SCAN LINE */
+  .section-tag { position: relative; display: inline-block; }
+  .section-tag::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px; background: var(--amber); opacity: 0.5; transition: width 1s ease 0.3s; }
+  .section-tag.visible::after { width: 100%; }
+
+  /* TAG HOVER */
+  .tag { transition: border-color 0.2s, color 0.2s, background 0.2s; }
+  .case:hover .tag { border-color: rgba(240,160,32,0.3); }
+
+  /* FOOTER SCANLINE */
+  footer { position: relative; overflow: hidden; }
+  footer::before { content: ''; position: absolute; top: -100%; left: 0; width: 100%; height: 1px; background: rgba(240,160,32,0.15); animation: scanline 8s linear infinite; }
+  @keyframes scanline { 0% { top: -5%; } 100% { top: 105%; } }
 </style>
 </head>
 <body>
 
+<div id="progress-bar"></div>
+<canvas id="particle-canvas"></canvas>
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
 <nav>
-  <div class="nav-logo">VM_<span class="cursor"></span></div>
+  <div class="nav-logo"><span class="logo-text">VM_</span><span class="cursor"></span></div>
   <ul class="nav-links">
     <li><a href="#services">SERVICES</a></li>
     <li><a href="#work">WORK</a></li>
